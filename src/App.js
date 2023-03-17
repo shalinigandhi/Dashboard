@@ -11,12 +11,16 @@ function App() {
 
   let [clicks, setClicks] = useState(0);
   let [impressions, setImpressions] = useState(0);
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
  
 
   const getDates = (obj) => {
     let updatedData = [];
 
     if (obj.startDate && obj.endDate) {
+          setStartDate(obj.startDate);
+          setEndDate(obj.endDate);
           updatedData = data.filter((d) => {
               return new Date(d.date).getTime() >= new Date(obj.startDate).getTime() &&
                   new Date(d.date).getTime() <= new Date(obj.endDate).getTime();
@@ -42,7 +46,7 @@ function App() {
       <main className='main-content'>
         <DatePicker data={data} getDates={getDates} />
         <Count clicks={clicks} impressions={impressions} />
-        <Highchart data={data} />
+        <Highchart data={data} startDate={startDate} endDate={endDate} />
       </main>
       
     </div>

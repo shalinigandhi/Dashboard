@@ -4,32 +4,45 @@ import HighchartsReact from 'highcharts-react-official'
 import './highchart.scss';
 
 
-const Highchart = ({ data }) => {
+const Highchart = ({ data, startDate, endDate }) => {
   
-  console.log(data);
 
-  const datesArray = data.map((d) => (
+  const updatedData = data.filter((item) => {
+    if (startDate && endDate) {
+      return new Date(item.date).getTime() >= new Date(startDate).getTime() &&
+           new Date(item.date).getTime() <= new Date(endDate).getTime();
+    }
+  });
+  console.log('updatedData', updatedData);
+
+
+  const updatedDatesArray = updatedData.map((d) => (
     d.date
   ))
 
-  const impressionsArray = data.map((d) => (
-    d.impressions
+  const impressionsArray = updatedData.map((d) => (
+    Number(d.impressions)
+  ))
+  const clicksArray = updatedData.map((d) => (
+    Number(d.clicks)
   ))
 
-  console.log(impressionsArray); 
+  console.log('impressionsArray', impressionsArray)
+
 
   const options = {
     title: {
       text: 'Product trends by Month'
     },
     xAxis: {
-      categories: [...datesArray]
-    },
-    yAxis: {
-      categories: [...impressionsArray]
+      categories: [...updatedDatesArray]
     },
     series: [{
-      data: [...impressionsArray]
+        name: 'Impressions',
+        data: [...impressionsArray]
+    }, {
+        name: 'Clicks',
+        data: [...clicksArray]
     }]
   }
   
