@@ -1,0 +1,21 @@
+.count-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    .count-wrapper {
+        display: inline-block;
+        box-shadow: 1px 1px 7px rgba(0,0,0,0.1);
+        padding: 10px;
+        min-width: 200px;
+
+        .value {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        &:last-of-type {
+            margin-left: 10px;
+        }
+    }
+}

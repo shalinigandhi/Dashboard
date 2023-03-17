@@ -1,0 +1,28 @@
+.sidebar-container {
+    position: fixed;
+    min-height: 100vh;
+    background: #efefef;
+    min-width: 200px;
+    z-index: 1;
+    padding: 20px;
+
+    .heading {
+        font-weight: 700;
+        font-size: 20px;
+        color: purple;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .navigation-links {
+        list-style-type: none;
+        text-align: left;
+        margin: 0;
+
+
+        .link {
+            font-size: 14px;
+            padding: 10px 0;
+        }
+    }
+}
